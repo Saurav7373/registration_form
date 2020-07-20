@@ -1,6 +1,6 @@
 {% extends 'alog/reg.html'%}
 {% block content %}
-<!--&lt;!&ndash; Button trigger modal &ndash;&gt;-->
+<!--Button trigger modal -->
 {% if user.is_authenticated%}
 You are loged in as {{request.user}}
 {% else %}
@@ -8,7 +8,6 @@ You are loged in as {{request.user}}
     Login
 </button>
 {% endif %}
-
 <!-- Modal -->
 <div aria-hidden="true" aria-labelledby="ModalLabel" class="modal fade" id="Modal" role="dialog" tabindex="-1">
     <div class="modal-dialog">
@@ -42,7 +41,6 @@ You are loged in as {{request.user}}
                 </a>
             </div>
         </div>
-
     </div>
 </div>
 </div>
