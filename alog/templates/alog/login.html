@@ -1,0 +1,50 @@
+{% extends 'alog/reg.html'%}
+{% block content %}
+<!--&lt;!&ndash; Button trigger modal &ndash;&gt;-->
+{% if user.is_authenticated%}
+You are loged in as {{request.user}}
+{% else %}
+<button class="btn btn-success" data-target="#Modal" data-toggle="modal" type="button">
+    Login
+</button>
+{% endif %}
+
+<!-- Modal -->
+<div aria-hidden="true" aria-labelledby="ModalLabel" class="modal fade" id="Modal" role="dialog" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel">Login Here</h5>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'login1' %}" method="post">
+                    <div class="form-group">
+                        <input class="form-control" id="loginusername" name="loginusername" placeholder="User Name"
+                               required type="text">
+                    </div>
+
+                    <div class="form-group">
+                        <input class="form-control" id="loginpass" name="loginpass" placeholder="Password"
+                               required type="password">
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-success a" type="submit">Login</button>
+                    </div>
+                    {% csrf_token %}
+                </form>
+                <a href="{% url 'signup' %}">
+                    <center>
+                        <button class="btn btn-danger my-3">Create Your account.</button>
+                    </center>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+
+{% endblock %}

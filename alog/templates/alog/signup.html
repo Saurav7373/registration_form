@@ -1,0 +1,73 @@
+<!-- Button trigger modal -->
+{% extends 'alog/reg.html' %}
+
+{% block content %}
+{% if user.is_authenticated%}
+You are loged in as {{request.user}}
+{% else %}
+<button class="btn btn-success" data-target="#Modal" data-toggle="modal" type="button">
+    Signup
+</button>
+
+
+{% endif %}
+
+<!-- Modal -->
+<div aria-hidden="true" aria-labelledby="ModalLabel" class="modal fade" id="Modal" role="dialog" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel">Signup Here </h5>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'signup' %}" method='post'>
+
+
+                    <div class="form-group">
+                        <input class="form-control" id="username" name="username" placeholder="User Name"
+                               required type="text">
+                    </div>
+
+                    <div class="form-group">
+                        <input class="form-control" id="fname" name="fname" placeholder="First Name"
+                               required type="text">
+                    </div>
+
+                    <div class="form-group">
+                        <input class="form-control" id="lname" name="lname" placeholder="Last Name"
+                               required type="text">
+                    </div>
+
+                    <div class="form-group">
+                        <input class="form-control" id="email" name="email" placeholder="name@gmail.com"
+                               required type="email">
+                    </div>
+
+                    <div class="form-group">
+                        <input class="form-control" id="pass1" name="pass1" placeholder="Choose Password"
+                               required type="password">
+                    </div>
+
+                    <div class="form-group">
+                        <input class="form-control" id="pass2" name="pass2" placeholder="Confirm Password"
+                               required type="password">
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-success" type="submit">Register</button>
+                    </div>
+                    {% csrf_token %}
+
+                </form>
+                <a href="{% url 'login1' %}">
+                    <center>
+                        <button class="btn btn-danger my-3">Try to login</button>
+                    </center>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock  %}
