@@ -1,6 +1,5 @@
-<!-- Button trigger modal -->
 {% extends 'alog/reg.html' %}
-
+<!-- Button trigger modal -->
 {% block content %}
 {% if user.is_authenticated%}
 You are loged in as {{request.user}}
@@ -8,10 +7,7 @@ You are loged in as {{request.user}}
 <button class="btn btn-success" data-target="#Modal" data-toggle="modal" type="button">
     Signup
 </button>
-
-
 {% endif %}
-
 <!-- Modal -->
 <div aria-hidden="true" aria-labelledby="ModalLabel" class="modal fade" id="Modal" role="dialog" tabindex="-1">
     <div class="modal-dialog">
@@ -24,8 +20,6 @@ You are loged in as {{request.user}}
             </div>
             <div class="modal-body">
                 <form action="{% url 'signup' %}" method='post'>
-
-
                     <div class="form-group">
                         <input class="form-control" id="username" name="username" placeholder="User Name"
                                required type="text">
@@ -59,7 +53,6 @@ You are loged in as {{request.user}}
                         <button class="btn btn-success" type="submit">Register</button>
                     </div>
                     {% csrf_token %}
-
                 </form>
                 <a href="{% url 'login1' %}">
                     <center>
